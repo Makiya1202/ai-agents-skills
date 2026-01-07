@@ -230,5 +230,6 @@ function Component() {
 
 ## Resources
 
-- **Responsive Design**: https://web.dev/responsive-web-design-basics/
+- **Responsive Design**: https://web.dev/learn/design/
 - **Mobile-First CSS**: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design
+- **Viewport Units**: https://developer.mozilla.org/en-US/docs/Web/CSS/length#viewport-percentage_lengths

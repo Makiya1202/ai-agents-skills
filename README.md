@@ -68,7 +68,152 @@ Agent skills are **specialized knowledge modules** that enhance AI coding agents
 
 ---
 
-## 📦 Available Skills
+## �️ Understanding Agent Skills (Open Standard)
+
+### What is SKILL.md?
+
+**SKILL.md** is a simple, open format for giving AI agents new capabilities and expertise. It's an open standard that works across multiple AI coding agents and platforms.
+
+> **Agent Skills** are folders of instructions, scripts, and resources that your AI agent can discover and use to perform tasks more accurately and efficiently.
+
+### Why Use Agent Skills?
+
+**For You (Developer)**:
+- 📚 **Learn Faster** — Pre-built knowledge from experts in your domain
+- 🎯 **Better Results** — Agents have context to work more accurately
+- ♻️ **Reuse Everywhere** — Same skill works across Copilot, Claude Code, Cursor, Windsurf, and more
+- 🔐 **Version Control** — Skills are part of your repository, tracked in git
+
+**For Your Team**:
+- 📖 **Capture Knowledge** — Document processes and best practices
+- 🚀 **Share Skills** — Distribute expertise across projects
+- 🏢 **Enterprise Use** — Centralize organizational knowledge
+
+**For AI Agents**:
+- 🧠 **Domain Expertise** — Perform specialized tasks reliably
+- 🔧 **New Capabilities** — Enable new workflows and automations
+- 🎓 **Context** — Access procedures, scripts, and examples on demand
+
+### What Can You Do With Agent Skills?
+
+Agent skills enable AI agents to:
+- **Domain Expertise**: Package specialized knowledge (legal review, data analysis, deployment procedures)
+- **New Capabilities**: Create presentations, build MCP servers, analyze datasets, debug failures
+- **Repeatable Workflows**: Turn multi-step tasks into consistent, auditable processes
+- **Interoperability**: Reuse skills across different compatible agent products
+
+---
+
+## 📚 How Agent Skills Work (Step-by-Step for Beginners)
+
+### Step 1: Understanding the File Structure
+
+Each skill is a simple folder with a `SKILL.md` file inside:
+
+```
+your-project/
+├── .github/skills/          # GitHub Copilot project skills location
+│   └── my-skill-name/
+│       ├── SKILL.md         # Main skill file (required)
+│       ├── script.js        # Optional: supporting scripts
+│       └── examples.md      # Optional: more examples
+├── .claude/skills/          # Claude Code project skills location
+│   └── my-skill-name/
+│       └── SKILL.md
+└── ~/.copilot/skills/       # Personal skills (available across all projects)
+    └── my-skill-name/
+        └── SKILL.md
+```
+
+### Step 2: Understanding SKILL.md Format
+
+Every `SKILL.md` file has two parts:
+
+**YAML Frontmatter** (metadata):
+```yaml
+---
+name: my-skill-name           # Unique identifier (lowercase, hyphens for spaces)
+description: What this skill  # When should the agent use this skill?
+license: MIT                  # Optional: license information
+---
+```
+
+**Markdown Body** (instructions):
+The rest of the file contains instructions and examples for the AI agent.
+
+### Step 3: A Real Example
+
+Here's what a simple `SKILL.md` looks like:
+
+```markdown
+---
+name: github-actions-debugging
+description: Guide for debugging failing GitHub Actions workflows. Use this when asked to debug CI/CD failures or workflow issues.
+---
+
+# Debugging GitHub Actions Workflows
+
+When debugging a failing workflow:
+
+1. **Check the job logs** - Look for error messages and stack traces
+2. **Review recent changes** - What changed since the last successful run?
+3. **Test locally** - Reproduce the issue in your local environment
+4. **Fix and validate** - Make changes and verify they work
+
+## Common Issues and Solutions
+
+### Issue: Workflow fails with "Command not found"
+**Solution**: Install the required tool in your workflow step
+
+### Issue: Permission denied when running scripts
+**Solution**: Add `chmod +x script.sh` before running the script
+```
+
+### Step 4: Agent Discovers and Uses Your Skill
+
+When you ask your AI agent to do something:
+
+```
+"Debug why our GitHub Actions workflow is failing"
+```
+
+The agent will:
+1. ✅ **Recognize** that you're asking about GitHub Actions
+2. ✅ **Find** the `github-actions-debugging` skill in your project
+3. ✅ **Load** the `SKILL.md` file into its context
+4. ✅ **Follow** the instructions to help you debug
+
+### Step 5: Supported Locations
+
+**Project Skills** (specific to one repository):
+- `your-repo/.github/skills/` — For GitHub Copilot
+- `your-repo/.claude/skills/` — For Claude Code
+
+**Personal Skills** (available across all projects on your machine):
+- `~/.copilot/skills/` — For GitHub Copilot (Copilot CLI and VS Code)
+- `~/.claude/skills/` — For Claude Code
+
+**Organization/Enterprise Skills** (coming soon):
+- Enterprise-level skills support is in development
+
+---
+
+## 🤝 Supported AI Agents
+
+Agent Skills work with these AI coding agents:
+
+| Agent | Support | Location |
+|:------|:--------|:---------|
+| **GitHub Copilot** | ✅ Full Support | `.github/skills/` or `~/.copilot/skills/` |
+| **Claude Code** | ✅ Full Support | `.claude/skills/` or `~/.claude/skills/` |
+| **Cursor** | ✅ Full Support | `.cursor/rules/` |
+| **Windsurf** | ✅ Full Support | `.windsurf/rules/` |
+| **VS Code Insiders** | ✅ Full Support | Agent mode with skills |
+| **VS Code (Stable)** | ⏳ Coming Soon | Support coming in future release |
+
+---
+
+## �📦 Available Skills
 
 | Skill | Description | Keywords |
 |:------|:------------|:---------|
@@ -104,74 +249,220 @@ Choose your AI coding agent and follow the instructions below.
 
 ---
 
-## 💻 Usage
+## 💻 Setup Guide: Using Skills in Your Agent (For Beginners)
+
+This guide walks you through setting up Agent Skills in your favorite coding agent, step by step.
+
+### 🎯 Prerequisites
+
+Before you start, you need:
+- A coding agent installed (Copilot, Claude Code, Cursor, or Windsurf)
+- A project folder on your computer
+- Basic familiarity with command line or your agent's UI
+
+### 📍 Step-by-Step Setup
+
+#### **Option 1: GitHub Copilot** (Most Popular)
 
 <details>
-<summary><strong>🟣 Claude Code</strong></summary>
+<summary><strong>🟢 Setup GitHub Copilot with Skills</strong></summary>
 
-Copy skills to `.claude/skills/` in your project:
+**For Project Skills** (specific to one repository):
 
-```bash
-# Single skill
-cp -r skills/aws-agentcore .claude/skills/
+1. **In your project folder**, create the skills directory:
+   ```bash
+   mkdir -p .github/skills
+   ```
 
-# All skills
-cp -r skills/* .claude/skills/
-```
+2. **Copy the skills you want** from this repository:
+   ```bash
+   # Copy a single skill
+   cp -r skills/vercel .github/skills/
+   
+   # Or copy all skills
+   cp -r skills/* .github/skills/
+   ```
+
+3. **Or manually create a skill**:
+   ```
+   your-project/
+   └── .github/
+       └── skills/
+           └── my-custom-skill/
+               └── SKILL.md
+   ```
+
+4. **Open your project in VS Code** and start using Copilot Agent
+5. **Ask Copilot a question** related to your skill, and it will automatically load it!
+
+**For Personal Skills** (available across all your projects):
+
+1. **Find your home directory** (`~` or `C:\Users\YourUsername`)
+
+2. **Create personal skills folder**:
+   ```bash
+   mkdir -p ~/.copilot/skills
+   ```
+
+3. **Copy skills there**:
+   ```bash
+   cp -r skills/vercel ~/.copilot/skills/
+   ```
+
+4. **Now all your projects** can use these skills automatically!
+
+**Verify it's working:**
+- Open Copilot Agent
+- Ask about something covered in your skill (e.g., "How do I deploy to Vercel?")
+- Copilot will use the skill to help you
 
 </details>
 
+---
+
+#### **Option 2: Claude Code**
+
 <details>
-<summary><strong>🟢 GitHub Copilot</strong></summary>
+<summary><strong>🟣 Setup Claude Code with Skills</strong></summary>
 
-Reference skills in `.github/copilot-instructions.md`:
+**For Project Skills**:
 
-```markdown
-# Project Instructions
+1. **In your project folder**, create the skills directory:
+   ```bash
+   mkdir -p .claude/skills
+   ```
 
-## Deployment
-See skills/vercel/SKILL.md for deployment patterns.
+2. **Copy the skills you want**:
+   ```bash
+   # Single skill
+   cp -r skills/langchain .claude/skills/
+   
+   # All skills
+   cp -r skills/* .claude/skills/
+   ```
 
-## Agent Development  
-See skills/aws-agentcore/SKILL.md for AgentCore patterns.
-```
+3. **Open your project in Claude Code**
+4. **Chat with Claude** about tasks covered in your skills - it will automatically use them!
 
-Or copy skills directly:
-```bash
-cp -r skills .github/
-```
+**For Personal Skills** (available everywhere):
+
+1. **Create personal skills folder**:
+   ```bash
+   mkdir -p ~/.claude/skills
+   ```
+
+2. **Copy skills there**:
+   ```bash
+   cp -r skills/aws-agentcore ~/.claude/skills/
+   ```
+
+**Verify it's working:**
+- Open Claude Code in your project
+- Ask about something in your skill
+- Claude will reference and use the skill
 
 </details>
 
+---
+
+#### **Option 3: Cursor**
+
 <details>
-<summary><strong>🔵 Cursor</strong></summary>
+<summary><strong>🔵 Setup Cursor with Skills</strong></summary>
 
-Add to `.cursor/rules/`:
+**For Project Rules**:
 
-```bash
-# All skills
-cp skills/*/SKILL.md .cursor/rules/
+1. **In your project folder**:
+   ```bash
+   mkdir -p .cursor/rules
+   ```
 
-# Or specific skills
-cp skills/langchain/SKILL.md .cursor/rules/
-```
+2. **Copy SKILL.md files** (rename them as rules):
+   ```bash
+   # Copy a skill as a rule file
+   cp skills/figma/SKILL.md .cursor/rules/figma.md
+   
+   # Or copy multiple
+   cp skills/*/SKILL.md .cursor/rules/
+   ```
+
+3. **In Cursor Settings**, configure which rules to use:
+   - Settings → Rules → Add project rules
+   - Point to `.cursor/rules/` folder
+
+4. **Start using Cursor** - it will apply these rules to your context automatically
 
 </details>
 
+---
+
+#### **Option 4: Windsurf**
+
 <details>
-<summary><strong>🟡 Windsurf</strong></summary>
+<summary><strong>🟡 Setup Windsurf with Skills</strong></summary>
 
-Add to `.windsurf/rules/`:
+**For Project Rules**:
 
-```bash
-# All skills
-cp skills/*/SKILL.md .windsurf/rules/
+1. **In your project folder**:
+   ```bash
+   mkdir -p .windsurf/rules
+   ```
 
-# Or specific skills
-cp skills/vercel/SKILL.md .windsurf/rules/
-```
+2. **Copy skills as rules**:
+   ```bash
+   # Copy specific skills
+   cp skills/vercel/SKILL.md .windsurf/rules/vercel.md
+   
+   # Or copy all skills
+   cp skills/*/SKILL.md .windsurf/rules/
+   ```
+
+3. **Windsurf automatically** discovers rules in `.windsurf/rules/`
+4. **Start building** - Windsurf will use these rules contextually
 
 </details>
+
+---
+
+### 🎓 What Happens After Setup?
+
+Once you've set up your skills:
+
+1. **Agent Detects Skills**: Your AI agent scans the skill directories
+2. **Agent Reads SKILL.md**: It reads the name and description from frontmatter
+3. **Agent Activates on Relevance**: When you ask a question matching the description, the agent loads the skill
+4. **Agent Follows Instructions**: Your agent now has the context to help you accurately
+
+### 💡 Example: Using a Vercel Skill
+
+**You have this SKILL.md**:
+```yaml
+---
+name: vercel-deployment
+description: Deploying applications to Vercel. Use this when asked about deploying, hosting, or managing Vercel projects.
+---
+```
+
+**You ask your agent**:
+> "Help me deploy my React app to Vercel"
+
+**Agent automatically**:
+- ✅ Finds `vercel-deployment` skill
+- ✅ Loads SKILL.md into context
+- ✅ Follows the deployment instructions
+- ✅ Helps you deploy successfully!
+
+### 🐛 Troubleshooting
+
+| Problem | Solution |
+|:--------|:---------|
+| Agent not using skill | Restart your agent, or make sure folder path is correct |
+| Skill file not found | Verify `SKILL.md` is in the right folder and named exactly "SKILL.md" |
+| Agent using wrong skill | Make sure skill descriptions are descriptive enough to match your request |
+
+---
+
+## 💻 Usage (Advanced)
 
 ---
 

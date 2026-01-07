@@ -143,4 +143,5 @@ The file must be at `.github/copilot-instructions.md` (not in root).
 
 ## Resources
 
-- **GitHub Docs**: https://docs.github.com/en/copilot/customizing-copilot/adding-repository-instructions-for-github-copilot
+- **GitHub Docs**: https://docs.github.com/en/copilot/customizing-copilot/adding-custom-instructions-for-github-copilot
+- **VS Code Copilot**: https://code.visualstudio.com/docs/copilot/copilot-customization

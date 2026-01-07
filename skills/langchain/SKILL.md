@@ -197,6 +197,8 @@ chain.invoke({"topic": "AI"})
 
 ## Resources
 
-- **LangChain Docs**: https://python.langchain.com/docs/
+- **LangChain Docs**: https://python.langchain.com/docs/introduction/
 - **LangGraph Docs**: https://langchain-ai.github.io/langgraph/
 - **LangSmith**: https://smith.langchain.com/
+- **LangChain Hub**: https://smith.langchain.com/hub
+- **LangChain Templates**: https://github.com/langchain-ai/langchain/tree/master/templates

